@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main.html}">
+<div layout:fragment="mainFragment">
+
+    <div class="card px-3 py-3 my-3 ms-2" style="width: 28%;">
+
+        <h4>Find cars by:</h4>
+
+        <!-- форма для поиска (фильтра) машин по минимальному объему двигателя -->
+        <form method="get" class="d-flex" th:action="@{'/cars'}">
+            <div class="form-floating me-3">
+                <input type="number" step="0.01" class="form-control" id="minimal_engine_volume" name="minimal_engine_volume" placeholder="minimal_engine_volume" th:value="${minimalEngineVolume}">
+                <label for="minimal_engine_volume">Minimal engine volume</label>
+            </div>
+            <button type="submit" class="btn btn-success" style="height: 43.5pt;"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
+
+    <div class="ms-2 me-2">
+        <table class="table">
+            <thead class="table-warning">
+            <tr>
+                <th>ID</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Engine Volume</th>
+                <th>Max Speed</th>
+                <th>View</th>
+            </tr>
+            </thead>
+            <tbody class="table-striped">
+            <tr th:each="car : ${cars}">
+                <td class="pt-3" th:text="${car.id}"></td>
+                <td class="pt-3" th:text="${car.brand}"></td>
+                <td class="pt-3" th:text="${car.model}"></td>
+                <td class="pt-3" th:text="${car.engineVolume}"></td>
+                <td class="pt-3" th:text="${car.maxSpeed}"></td>
+                <td>
+                    <a class="btn btn-primary" th:href="@{'/car?id=' + ${car.id}}">View</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</html>

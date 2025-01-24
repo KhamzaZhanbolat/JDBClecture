@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main.html}">
+<div layout:fragment="mainFragment">
+    <div class="ms-2">
+        <h2>
+            <span th:text="${car.brand}"></span> <span th:text="${car.model}"></span>
+        </h2>
+        <p>
+
+        </p>
+        <p>
+            Engine volume: <span th:text="${car.engineVolume}"></span> liters
+        </p>
+        <p>
+            Max speed: <span th:text="${car.maxSpeed}"></span> km/h
+        </p>
+    </div>
+</div>
+</html>
